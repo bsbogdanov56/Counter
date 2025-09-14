@@ -1,22 +1,20 @@
 # This workflow will build a Swift project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
-name: Swift
+name: Swift 
 
-on:
-  push:
-    branches: [ "sprint_03" ]
-  pull_request:
-    branches: [ "sprint_03" ]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: macos-latest
-
+    
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build project
       run: swift build -v
+      
     - name: Run tests
-      run: swift test -v
+      run: swift test
